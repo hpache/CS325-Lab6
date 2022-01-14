@@ -1,9 +1,9 @@
 /*
-    File: Lab5_hpache22.html
+    File: dragsquare.js
     Name: Henry Pacheco Cachon
     Class: CS325, January 2022
-    Lab: 05
-    Due: 12 January 2022
+    Lab: 06
+    Due: 15 January 2022
 */
 
 "use strict;"

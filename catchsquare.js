@@ -1,21 +1,35 @@
+/*
+    File: catchsquare.js
+    Name: Henry Pacheco Cachon
+    Class: CS325, January 2022
+    Lab: 06
+    Due: 15 January 2022
+*/
+
 "use strict;"
 let testID;
-
 window.onload = function(){
 
+    // Begin countdown for game start
     if (!testID){
         let count = 5;
         testID = setInterval( function(){
+
             let message = document.getElementById("message");
             message.innerHTML = "The game starts in " + count + " seconds.";
             if (count === 0){
                 start();
+                message.innerHTML = "START!";
             }
             count -= 1;
+
         }, 1000);
     }
 
+    // Start the game
     function start(){
+
+        // Clear countdown interval element
         clearInterval(testID);
         testID = null;
 
@@ -38,25 +52,40 @@ window.onload = function(){
         // Add square element to rectangle area
         rectArea.appendChild(Square);
 
-        let time = 3000;
+        // Counting the number of times the square is caught
         let squareCatchCount = 0;
+        // Initial timeout element with 3 seconds
+        let time = 3000;
         let timeoutID = setTimeout(end, time);
+        // Move square on each click and reset timeout element with less time
         Square.onclick = function(){
-            clearTimeout(timeoutID);
+
+            // Set new position
             let currentX = parseFloat(Square.style.left);
             let currentY = parseFloat(Square.style.top);
             Square.style.left = (currentX + (Math.random() * 60))%700 + "px";
             Square.style.top = (currentY + (Math.random() * 60))%200 + "px";
+
+            // Decrease the timeout delay
             time -= 100;
+            // Reset timeout with new delay
+            clearTimeout(timeoutID);
+            timeoutID = setTimeout(end,time);
+
+            // Add to the amount of squares caught and edit html
             squareCatchCount += 1;
             document.getElementById("result").innerHTML = squareCatchCount + "";
-            timeoutID = setTimeout(end,time);
         }
 
+        // End game logic
         function end(){
+
+            // Clear interval object
             clearInterval(testID);
             testID = null;
-            console.log("You lost!");
+            
+            // Game over message appears and the square is removed from the screen
+            message.innerHTML = "Game Over";
             Square.remove();
         }
     }
