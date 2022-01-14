@@ -6,7 +6,7 @@
     Due: 12 January 2022
 */
 
-"use_strict;"
+"use strict;"
 window.onload = function() {
 
     // Get the rectangle area
