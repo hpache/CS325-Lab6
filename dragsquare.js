@@ -30,12 +30,14 @@ window.onload = function() {
 
     // Get square ready to move when mouse is pressed down
     Square.onmousedown = function(e){
+
         // Set z to top and append square to the body
         Square.style.zIndex = 1000;
         document.body.append(Square);
 
         // Move Square to the cursor's location
         function moveAt(pageX, pageY){
+            console.log(pageX + "," + pageY);
             Square.style.left = pageX - Square.offsetWidth/2 + "px";
             Square.style.top = pageY - Square.offsetHeight + "px";
         }
@@ -43,6 +45,8 @@ window.onload = function() {
         // Move square to cursor's current location when pressed down
         moveAt(e.pageX, e.pageY);
 
+
+        
         // move the square to the cursor's location while the mouse is moving 
         document.addEventListener("mousemove", onMouseMove);
 
@@ -55,5 +59,6 @@ window.onload = function() {
             document.removeEventListener("mousemove", onMouseMove);
             Square.onmouseup = null;
         };
+        
     };
-}
+};

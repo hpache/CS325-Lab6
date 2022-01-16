@@ -66,6 +66,11 @@ window.onload = function(){
             Square.style.left = (currentX + (Math.random() * 60))%700 + "px";
             Square.style.top = (currentY + (Math.random() * 60))%200 + "px";
 
+            // Set new colors
+            let color = "#" + Math.floor(Math.random()*16777215).toString(16);
+            Square.style.borderColor = color;
+            Square.style.backgroundColor= color;
+
             // Decrease the timeout delay
             time -= 100;
             // Reset timeout with new delay
